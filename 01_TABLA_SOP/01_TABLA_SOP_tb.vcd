@@ -1,0 +1,83 @@
+$date
+	Sun Aug 02 15:46:21 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module TABLA_SOP $end
+$var wire 1 ! out0 $end
+$var wire 1 " out1 $end
+$var wire 1 # out2 $end
+$var wire 1 $ out3 $end
+$var wire 1 % out4 $end
+$var wire 1 & out5 $end
+$var wire 1 ' out6 $end
+$var wire 1 ( out7 $end
+$var wire 1 ) out8 $end
+$var reg 1 * A $end
+$var reg 1 + B $end
+$var reg 1 , C $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0,
+0+
+0*
+1)
+0(
+0'
+0&
+0%
+1$
+1#
+1"
+1!
+$end
+#1
+0)
+0$
+0#
+1,
+#2
+1)
+1%
+1#
+0"
+0,
+1+
+#3
+0)
+0%
+0#
+1,
+#4
+1)
+1&
+1#
+1"
+0!
+0,
+0+
+1*
+#5
+0&
+1'
+0#
+1,
+#6
+0)
+0'
+1#
+0"
+0,
+1+
+#7
+1)
+1(
+0#
+1,
+#8
