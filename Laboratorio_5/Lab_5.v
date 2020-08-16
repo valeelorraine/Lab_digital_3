@@ -6,7 +6,8 @@
 
 // Mux 2:1
 module MUX2_1(input wire S, D0, D1, output wire Y); //Generar y nombrar el módulo
-    assign Y = S? D1 : D0; // Cuando S es = 0, toma el valor menos significativo. Cuando S es = 1, toma el valor más significativo
+// Cuando S es = 0, toma el valor menos significativo. Cuando S es = 1, toma el valor más significativo
+    assign Y = S? D1 : D0;
 
 endmodule
 
