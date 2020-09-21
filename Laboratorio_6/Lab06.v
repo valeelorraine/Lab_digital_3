@@ -59,8 +59,8 @@ wire S1, S0, S11, S00;
   FFD2 U(clk, reset, S11, S1);
   FFD2 U1(clk, reset, S00, S0);
 
-
 endmodule
+
 
 
 // Máquina de estados finitos Ejercicio 3
