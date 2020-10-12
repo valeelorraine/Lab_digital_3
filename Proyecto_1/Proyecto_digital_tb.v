@@ -8,10 +8,10 @@
 module testbench();
 // Lo que ve el usuario
 
-wire M1_1, M1_0, M2_1, M2_0;
-wire L_2, L_1, L_0;
-reg S, I_0, I_1, I_2;
-reg clk, reset
+wire Y1_1, Y1_0, Y2_1, Y2_0;
+wire Y_1, Y_2, Y_3;
+reg S, I_0, I_1, I_2, O;
+reg clk, reset;
 
 // Reloj de una unidad de tiempo con cambio en el flanco
 always
@@ -20,7 +20,7 @@ always
 end
 
 //Instancia con entradas y salidas de la FSM
-robot R(clk, reset, S, I_2, I_1, I_0, M1_1, M1_0, M2_1, M2_0, L_2, L_1, L_0);
+Join U(clk, reset, S, I_2, I_1, I_0, O, Y1_1, Y1_0, Y2_1, Y2_0, Y_1, Y_2, Y_3);
 
 
 // Prueba para la FSM
@@ -29,27 +29,56 @@ initial begin
   $display("\n");
   $display(" ROBOT ");
   $display("\n");
-  $display(" clock Sensor I_2 I_1 I_1 | M1_1 M1_0 M2_1 M2_0 L_2 L_1 L_0"); //I _1
-  $display("-----------------------------|---");
-  $monitor(" %b   %b    %b    %b     %b  | %b    %b    %b    %b    %b    %b    %b", clk, S, I_0, I_1, I_2, M1_1, M1_0, M2_1, M2_0, L_2, L_1, L_0);
+  $display("clk Sensor I_2 I_1 I_0 O | Y_1, Y_2, Y_3, Y1_1, Y1_0, Y2_1, Y2_0");
+  $display("-------------------------------------|-----------------------------------------");
+  $monitor(" %b   %b    %b    %b     %b     %b    | %b    %b    %b    %b    %b    %b    %b", clk, S, I_2, I_1, I_0, O, Y1_1, Y1_0, Y2_1, Y2_0, Y1_1, Y_2, Y_3,);
 
+  #2 reset = 1;
+  #4 reset = 0;
 
+  #4 S = 0; I_2 = 0; I_1 = 0 ; I_0 = 0; O = 0;
+  #4 S = 0; I_2 = 0; I_1 = 0 ; I_0 = 0; O = 1;
+  #4 S = 1; I_2 = 0; I_1 = 0 ; I_0 = 0; O = 0;
+  #4 S = 1; I_2 = 0; I_1 = 0 ; I_0 = 0; O = 1;
 
-  #5 I_2 = 1; I_1 = 0; I_1 = 0;
-  C[0] = 0; C[1] = 0; C[2] = 0; C[3] = 0; set = 0; reset = 1;
-  #5 C[0] = 0; C[1] = 0; C[2] = 1; C[3] = 0; reset = 0;
-  #5 C[0] = 0; C[1] = 1; C[2] = 0; C[3] = 1; reset = 0;
-  #5 C[0] = 0; C[1] = 0; C[2] = 1; C[3] = 1; reset = 0;
+  #4 S = 0; I_2 = 0; I_1 = 0 ; I_0 = 1; O = 0;
+  #4 S = 0; I_2 = 0; I_1 = 0 ; I_0 = 1; O = 1;
+  #4 S = 1; I_2 = 0; I_1 = 0 ; I_0 = 1; O = 0;
+  #4 S = 1; I_2 = 0; I_1 = 0 ; I_0 = 1; O = 1;
+
+  #4 S = 0; I_2 = 0; I_1 = 1 ; I_0 = 0; O = 0;
+  #4 S = 0; I_2 = 0; I_1 = 1 ; I_0 = 0; O = 1;
+  #4 S = 1; I_2 = 0; I_1 = 1 ; I_0 = 0; O = 0;
+  #4 S = 1; I_2 = 0; I_1 = 1 ; I_0 = 0; O = 1;
+
+  #4 S = 0; I_2 = 0; I_1 = 1 ; I_0 = 1; O = 0;
+  #4 S = 0; I_2 = 0; I_1 = 1 ; I_0 = 1; O = 1;
+  #4 S = 1; I_2 = 0; I_1 = 1 ; I_0 = 1; O = 0;
+  #4 S = 1; I_2 = 0; I_1 = 1 ; I_0 = 1; O = 1;
+
+  #4 S = 0; I_2 = 1; I_1 = 0 ; I_0 = 0; O = 0;
+  #4 S = 0; I_2 = 1; I_1 = 0 ; I_0 = 0; O = 1;
+  #4 S = 1; I_2 = 1; I_1 = 0 ; I_0 = 0; O = 0;
+  #4 S = 1; I_2 = 1; I_1 = 0 ; I_0 = 0; O = 1;
+
+  #4 S = 0; I_2 = 1; I_1 = 0 ; I_0 = 1; O = 0;
+  #4 S = 0; I_2 = 1; I_1 = 0 ; I_0 = 1; O = 1;
+  #4 S = 1; I_2 = 1; I_1 = 0 ; I_0 = 1; O = 0;
+  #4 S = 1; I_2 = 1; I_1 = 0 ; I_0 = 1; O = 1;
+
+  #4 S = 0; I_2 = 1; I_1 = 1 ; I_0 = 1; O = 0;
+  #4 S = 0; I_2 = 1; I_1 = 1 ; I_0 = 1; O = 1;
+  #4 S = 1; I_2 = 1; I_1 = 1 ; I_0 = 1; O = 0;
+  #4 S = 1; I_2 = 1; I_1 = 1 ; I_0 = 1; O = 1;
 
 end
 
-
 initial
-  # $finish;
+  #110 $finish;
 
 // GTK wave
 initial begin
-  $dumpfile("testbench.vcd");
-  $dumpvars(0, Testbench);
+  $dumpfile("Proyecto_digital_tb.vcd");
+  $dumpvars(0, testbench);
 end
 endmodule
