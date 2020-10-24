@@ -33,7 +33,6 @@ clk = 0; rst = 0; en = 0; blo = 0; load = 12'b000000000000;
 #2 blo = 1; load = 12'b000001000010;
 #1 blo = 0; en = 1;
 #1 en = 1;
-
 end
 
 always
