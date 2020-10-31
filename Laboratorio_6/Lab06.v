@@ -55,7 +55,7 @@ wire S1, S0, S11, S00;
   assign S00 = (~S1 & ~S0 & A);
   assign Y = (S1 & A & B);
 
-// Utilizar el Flip FLop de 2 bits
+// Utilizar el Flip FLop de 1 bits
   FFD2 U(clk, reset, S11, S1);
   FFD2 U1(clk, reset, S00, S0);
 
