@@ -20,7 +20,7 @@ module testbench();
   always
       #1 clk = ~clk;
 
-  // Iteración del módulo
+  // Instanciación del módulo
   integrador U(clk, reset, ENPC, ENF, blo, load, P_B, instr, oprnd);
 
 
@@ -29,7 +29,7 @@ module testbench();
     #1
     $display("\n");
     $display(" Programa ");
-    $display("\n");
+    $display("\n")
     $display("-----------------------------|--------------------------|");
     $display("Clk reset ENPC ENF blo load  |   P_B     instr    oprnd |");
     $display("-----------------------------|--------------------------|");
